@@ -1,0 +1,281 @@
+html_content = """<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan Ririn & Ma'ruf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #8e735b;
+            --dark: #4a3f35;
+            --bg: #fdfaf7;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+
+        /* Overlay / Welcome Page */
+        #overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Ganti dengan salah satu foto terbaik Anda */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url("WhatsApp Image 2026-05-05 at 12.38.55 (1).jpeg") center/cover;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    transition: 0.8s;
+}
+
+/* Hero Section (Setelah klik buka) */
+.hero {
+    height: 100vh;
+    /* Ganti dengan foto lainnya */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url("WhatsApp Image 2026-05-05 at 12.38.55.jpeg") center/cover;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: white; text-align: center; padding: 20px;
+}
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80") center/cover;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; padding: 20px;
+        }
+        .hero h2 { font-weight: 300; letter-spacing: 5px; font-size: 1rem; margin-bottom: 10px; }
+        .hero h1 { font-family: 'Dancing Script', cursive; font-size: clamp(3.5rem, 8vw, 5rem); margin: 10px 0; }
+
+        /* Music Control */
+        .music-control {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .rotating { animation: rotate 4s linear infinite; }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* Quotes Section */
+        .quotes { padding: 80px 20px; font-style: italic; max-width: 700px; margin: auto; text-align: center; }
+        .quotes i { color: var(--primary); font-size: 1.5rem; margin-bottom: 20px; }
+
+        /* Mempelai */
+        .mempelai-box { padding: 20px; }
+        
+        /* Gallery Grid */
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px; padding: 20px; max-width: 1100px; margin: auto;
+        }
+        .gallery-item {
+            width: 100%; height: 400px; object-fit: cover;
+            border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+
+        /* Nav Bottom */
+        .nav-bottom {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(255,255,255,0.95); padding: 12px 30px;
+            border-radius: 50px; display: flex; gap: 25px; z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .nav-bottom a { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
+
+        section { padding: 80px 20px; text-align: center; }
+        .title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 30px; }
+        .card { background: white; padding: 40px 20px; border-radius: 25px; margin: 20px auto; max-width: 600px; border: 1px solid #eee; }
+        
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: 0.3s;
+        }
+        .btn:hover { background: var(--dark); }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 3.5rem; }
+            .nav-bottom { gap: 15px; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay">
+        <h2 style="font-weight: 300; letter-spacing: 3px;">WEDDING INVITATION</h2>
+        <h1 style="font-family: 'Dancing Script'; font-size: 3.5rem; margin: 20px 0;">Ririn & Ma'ruf</h1>
+        <p style="margin-bottom: 30px;">Kepada Bapak/Ibu/Saudara/i</p>
+        <button onclick="bukaUndangan()" style="padding: 15px 40px; background: white; color: var(--primary); border: none; border-radius: 30px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+            <i class="fa fa-envelope-open" style="margin-right: 10px;"></i> Buka Undangan
+        </button>
+    </div>
+
+    <audio id="weddingSong" loop>
+        <source src="https://docs.google.com/uc?export=download&id=1aNonKjCayTnBHIzx6iysSU7VzTVV3VLT" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()" id="musicBtn" style="display: none;">
+        <i class="fas fa-music" id="musicIcon"></i>
+    </div>
+
+    <div class="nav-bottom">
+        <a href="#home"><i class="fa fa-home"></i></a>
+        <a href="#mempelai"><i class="fa fa-heart"></i></a>
+        <a href="#acara"><i class="fa fa-calendar-check"></i></a>
+        <a href="#galeri"><i class="fa fa-images"></i></a>
+    </div>
+
+    <header id="home" class="hero">
+        <h2>THE WEDDING OF</h2>
+        <h1>Ririn & Ma'ruf</h1>
+        <p>Minggu, 24 Mei 2026</p>
+    </header>
+
+    <section class="quotes">
+        <i class="fa fa-quote-left"></i>
+        <p style="margin-bottom: 20px;">
+            "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang."
+        </p>
+        <strong>(QS. Ar-Rum: 21)</strong>
+    </section>
+
+    <section id="mempelai">
+        <p style="margin-bottom: 40px; padding: 0 20px;">Assalamu'alaikum Warahmatullahi Wabarakatuh<br>Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i ke acara pernikahan kami:</p>
+        
+        <div class="mempelai-box">
+            <h2 class="title" style="margin-bottom: 5px;">Nurin Nadhiroh, S.Pd</h2>
+            <p><strong>Ririn</strong></p>
+            <p style="margin-top: 10px;">Putri dari Bpk. Ruslan & Ibu Musyahadah</p>
+            <p><small>Bandungharjo dk tengger rt 01 rw 02</small></p>
+        </div>
+
+        <div style="font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--primary); margin: 30px 0;">&</div>
+
+        <div class="mempelai-box">
+            <h2 class="title" style="margin-bottom: 5px;">Ma'ruf Alfatah</h2>
+            <p><strong>Ma'ruf</strong></p>
+            <p style="margin-top: 10px;">Putra dari Bpk. Suroto & Ibu Suyatmi</p>
+            <p><small>Tulakan Drojo Rt 03 rw 07</small></p>
+        </div>
+    </section>
+
+    <section id="galeri" style="background: #f4f1ed;">
+        <h2 class="title">Momen Bahagia</h2>
+        <!-- Galeri -->
+<section id="galeri" style="background: #f4f1ed;">
+    <h2 class="title">Momen Bahagia</h2>
+    <div class="gallery-container">
+        <!-- Ganti link di bawah ini dengan nama file foto asli Anda -->
+        <img src="WhatsApp Image 2026-05-05 at 12.38.59.jpeg" class="gallery-item">
+        <img src="WhatsApp Image 2026-05-05 at 12.38.58.jpeg" class="gallery-item">
+        <img src="WhatsApp Image 2026-05-05 at 12.38.57.jpeg" class="gallery-item">
+        <img src="WhatsApp Image 2026-05-05 at 12.38.56.jpeg" class="gallery-item">
+        <img src="WhatsApp Image 2026-05-05 at 12.38.55.jpeg" class="gallery-item">
+        <img src="WhatsApp Image 2026-05-05 at 12.38.55 (1).jpeg" class="gallery-item">
+    </div>
+</section>
+        </div>
+    </section>
+
+    <section id="acara">
+        <h2 class="title">Waktu & Tempat</h2>
+        <div class="card">
+            <i class="fa fa-ring" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <h3>Akad Nikah</h3>
+            <p>Pukul 14.00 WIB</p>
+            <hr style="margin: 20px auto; width: 50%; opacity: 0.2;">
+            <i class="fa fa-utensils" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+            <h3>Resepsi</h3>
+            <p>Pukul 14.00 WIB - Selesai</p>
+            <br>
+            <p><strong>Lokasi Acara:</strong><br>Kediaman Mempelai Wanita<br>Bandungharjo, Jepara</p>
+            <a href="https://maps.google.com" target="_blank" class="btn">Petunjuk Lokasi</a>
+        </div>
+    </section>
+
+    <section>
+        <p style="max-width: 600px; margin: auto; padding: 0 20px;">"Pernikahan bukanlah sekadar sebuah janji, namun sebuah perjalanan panjang yang akan kita tempuh bersama dengan penuh cinta dan kesabaran."</p>
+        <h2 style="font-family: 'Dancing Script', cursive; font-size: 3rem; margin-top: 40px; color: var(--primary);">Terima Kasih</h2>
+    </section>
+
+    <footer style="padding: 60px 20px 120px; background: #eee; font-size: 0.8rem; color: #888; text-align: center;">
+        <p>Made with Love for Ririn & Ma'ruf</p>
+    </footer>
+
+    <script>
+        const song = document.getElementById('weddingSong');
+        const musicBtn = document.getElementById('musicBtn');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        function bukaUndangan() {
+            // Sembunyikan overlay dengan efek fade out
+            const overlay = document.getElementById('overlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                musicBtn.style.display = 'flex'; // Munculkan tombol musik
+            }, 800);
+            
+            playMusic();
+        }
+
+        function playMusic() {
+            song.play().catch(error => {
+                console.log("Autoplay dicegah oleh browser, musik akan diputar setelah interaksi.");
+            });
+            isPlaying = true;
+            musicBtn.classList.add('rotating');
+            musicIcon.classList.remove('fa-music');
+            musicIcon.classList.add('fa-pause');
+        }
+
+        function toggleMusic() {
+            if (isPlaying) {
+                song.pause();
+                musicBtn.classList.remove('rotating');
+                musicIcon.classList.remove('fa-pause');
+                musicIcon.classList.add('fa-play');
+            } else {
+                song.play();
+                musicBtn.classList.add('rotating');
+                musicIcon.classList.remove('fa-play');
+                musicIcon.classList.add('fa-pause');
+            }
+            isPlaying = !isPlaying;
+        }
+    </script>
+</body>
+</html>"""
+
+with open("undangan_ririn_maruf.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
