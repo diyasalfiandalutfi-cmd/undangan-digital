@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Undangan Premium - Lutfi Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-admin: #f4f4f2;
+    --white: #ffffff;
+    --gold: #b8926a;
+    --gold-light: #e8d5b0;
+    --dark: #2c2c2c;
+    --text-muted: #777;
+    --border: #e0e0e0;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg-admin); color: var(--dark); font-family: 'Montserrat', sans-serif; display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; }
+
+  /* SIDEBAR */
+  .sidebar { background: var(--white); border-right: 1px solid var(--border); padding: 30px 0; display: flex; flex-direction: column; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; text-align: center; margin-bottom: 40px; color: var(--gold); }
+  .nav-item { padding: 12px 25px; cursor: pointer; color: var(--text-muted); font-size: 0.85rem; transition: 0.3s; }
+  .nav-item.active { color: var(--gold); background: #fffaf5; border-right: 3px solid var(--gold); font-weight: 600; }
+  .sidebar-footer { margin-top: auto; padding: 20px; font-size: 0.7rem; color: var(--text-muted); text-align: center; border-top: 1px solid #eee; }
+
+  /* MAIN CONTENT */
+  .main { padding: 30px; overflow-y: auto; }
+  .content-layout { display: grid; grid-template-columns: 1fr 400px; gap: 25px; }
+
+  /* CARD STYLE */
+  .card { background: var(--white); border-radius: var(--radius); padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); margin-bottom: 20px; border: 1px solid var(--border); }
+  .card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--gold); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+
+  /* FORM ELEMENTS */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .form-group { margin-bottom: 12px; }
+  label { font-size: 0.7rem; text-transform: uppercase; font-weight: 600; color: var(--text-muted); display: block; margin-bottom: 4px; }
+  input, textarea, select { width: 100%; padding: 10px; border: 1px solid var(--border); border-radius: 6px; font-family: inherit; font-size: 0.85rem; outline: none; }
+  input:focus { border-color: var(--gold); }
+
+  /* PREVIEW PHONE */
+  .preview-phone { width: 100%; background: #fff; border-radius: 35px; border: 10px solid #222; height: 800px; position: sticky; top: 20px; overflow-y: auto; scrollbar-width: none; background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); }
+  .preview-content { padding: 40px 20px; text-align: center; }
+  
+  /* WEDDING PREVIEW ELEMENTS */
+  .p-names { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--gold); margin: 15px 0; }
+  .p-and { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; display: block; margin: -8px 0; }
+  .p-date { border-top: 1px solid var(--gold-light); border-bottom: 1px solid var(--gold-light); padding: 8px 0; margin: 15px 0; font-family: 'Cormorant Garamond', serif; letter-spacing: 2px; font-size: 1rem; }
+  .event-box { background: #fffaf5; border: 1px solid var(--gold-light); border-radius: 10px; padding: 15px; margin-bottom: 15px; }
+  
+  /* STORY & GIFT PREVIEW */
+  .p-story-item { text-align: left; border-left: 1px solid var(--gold); padding-left: 15px; margin-bottom: 15px; position: relative; }
+  .p-story-item::before { content: ''; position: absolute; left: -5px; top: 0; width: 9px; height: 9px; background: var(--gold); border-radius: 50%; }
+  .p-gift-card { background: white; border: 1px dashed var(--gold); border-radius: 8px; padding: 15px; margin-top: 10px; }
+
+  /* AUDIO PLAYER PREVIEW */
+  .music-control { position: absolute; top: 20px; right: 20px; background: var(--gold); color: white; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; cursor: pointer; animation: rotate 3s linear infinite; }
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* BUTTONS */
+  .btn-gold { background: var(--gold); color: white; width: 100%; padding: 15px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+  .thumb-container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 10px; }
+  .thumb { aspect-ratio: 1; border-radius: 4px; overflow: hidden; position: relative; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="logo">Premium Admin</div>
+  <div class="nav-item active">✦ Edit Undangan</div>
+  <div class="nav-item">◈ Buku Tamu</div>
+  <div class="nav-item">◉ Kirim Pesan</div>
+  <div class="sidebar-footer">
+    Developed by<br><strong>Lutfi Wedding</strong>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="content-layout">
+    <div class="editor">
+      <!-- DATA UTAMA -->
+      <div class="card">
+        <div class="card-title">🎵 Musik & Suasana</div>
+        <div class="form-group">
+          <label>Link Lagu (Youtube/MP3 Direct)</label>
+          <input type="text" id="f-music" placeholder="https://example.com/song.mp3">
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">💑 Detail Pasangan</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Mempelai Pria</label><input type="text" id="f-pria"></div>
+          <div class="form-group"><label>Mempelai Wanita</label><input type="text" id="f-wanita"></div>
+        </div>
+        <div class="form-group"><label>Kata Pembuka / Ayat</label><textarea id="f-ayat" rows="2"></textarea></div>
+      </div>
+
+      <!-- CERITA CINTA -->
+      <div class="card">
+        <div class="card-title">📜 Cerita Cinta (Love Story)</div>
+        <div class="form-group">
+          <label>Tahun / Judul</label><input type="text" id="f-story-title" placeholder="2022 - Pertama Bertemu">
+          <label style="margin-top:8px">Cerita</label><textarea id="f-story-desc" rows="2"></textarea>
+          <button class="btn-gold" style="padding:8px; font-size:0.7rem; margin-top:8px" onclick="addStory()">+ Tambah Cerita</button>
+        </div>
+        <div id="story-list-admin" style="font-size:0.8rem; color:var(--text-muted)"></div>
+      </div>
+
+      <!-- KADO DIGITAL -->
+      <div class="card">
+        <div class="card-title">🎁 Kado Digital</div>
+        <div class="form-grid">
+          <div class="form-group"><label>Bank / Platform</label><input type="text" id="f-bank-name" placeholder="BCA / Dana"></div>
+          <div class="form-group"><label>Nomor Rekening</label><input type="text" id="f-bank-number"></div>
+        </div>
+        <div class="form-group"><label>Atas Nama</label><input type="text" id="f-bank-user"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">📷 Moment Indah</div>
+        <input type="file" id="f-gallery" multiple accept="image/*" onchange="handleUpload(this.files)">
+        <div id="thumb-container" class="thumb-container"></div>
+      </div>
+
+      <button class="btn-gold" onclick="saveAll()">✦ PUBLIKASIKAN PERUBAHAN</button>
+    </div>
+
+    <!-- PREVIEW AREA -->
+    <div class="preview">
+      <div class="preview-phone">
+        <div class="music-control">♪</div>
+        <div class="preview-content">
+          <div style="font-size:0.8rem; color:var(--gold); font-style:italic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
+          <div class="p-names">
+            <span id="p-pria">Pria</span><span class="p-and">&</span><span id="p-wanita">Wanita</span>
+          </div>
+          <div class="p-date">SABTU, 20 MEI 2026</div>
+
+          <!-- STORY PREVIEW -->
+          <div style="margin:40px 0">
+            <div style="font-family:'Cormorant Garamond'; color:var(--gold); letter-spacing:3px; margin-bottom:20px">LOVE STORY</div>
+            <div id="p-story-container"></div>
+          </div>
+
+          <!-- GIFT PREVIEW -->
+          <div style="margin:40px 0; padding:20px; background:#fdfcf8; border-radius:15px">
+            <div style="font-size:0.9rem; font-weight:600; color:var(--gold)">KADO DIGITAL</div>
+            <p style="font-size:0.7rem; color:var(--text-muted); margin:10px 0">Doa restu Anda adalah kado terindah, namun jika ingin memberi lebih:</p>
+            <div class="p-gift-card">
+              <div id="p-bank-name" style="font-weight:600; font-size:0.8rem">-</div>
+              <div id="p-bank-number" style="letter-spacing:1px; margin:5px 0">00000000</div>
+              <div id="p-bank-user" style="font-size:0.7rem; color:var(--text-muted)">A/N Nama Penerima</div>
+            </div>
+          </div>
+
+          <!-- PENUTUP -->
+          <div style="margin-top:50px; padding-top:20px; border-top:1px solid var(--gold-light)">
+            <p style="font-size:0.8rem; line-height:1.6">Merupakan suatu kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir.</p>
+            <div style="margin-top:20px">
+              <p style="font-size:0.75rem; font-weight:600">Hormat Kami,</p>
+              <p class="p-names" style="font-size:1.5rem; margin:5px 0" id="p-closing-names">Pria & Wanita</p>
+            </div>
+            <div style="margin-top:40px; font-size:0.6rem; color:var(--text-muted); letter-spacing:1px">
+              DESIGNED BY<br>
+              <strong style="color:var(--gold)">LUTFI WEDDING</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+let stories = [];
+let gallery = [];
+
+// SYNC BASIC INFO
+const syncMap = {
+  'f-pria': 'p-pria',
+  'f-wanita': 'p-wanita',
+  'f-bank-name': 'p-bank-name',
+  'f-bank-number': 'p-bank-number',
+  'f-bank-user': 'p-bank-user'
+};
+
+Object.keys(syncMap).forEach(key => {
+  document.getElementById(key).addEventListener('input', (e) => {
+    document.getElementById(syncMap[key]).innerText = e.target.value || '-';
+    if(key === 'f-pria' || key === 'f-wanita') {
+      document.getElementById('p-closing-names').innerText = 
+        document.getElementById('f-pria').value + " & " + document.getElementById('f-wanita').value;
+    }
+  });
+});
+
+// STORY LOGIC
+function addStory() {
+  const title = document.getElementById('f-story-title').value;
+  const desc = document.getElementById('f-story-desc').value;
+  if(!title || !desc) return;
+
+  stories.push({title, desc});
+  renderStories();
+  document.getElementById('f-story-title').value = '';
+  document.getElementById('f-story-desc').value = '';
+}
+
+function renderStories() {
+  const pContainer = document.getElementById('p-story-container');
+  const aContainer = document.getElementById('story-list-admin');
+  
+  pContainer.innerHTML = stories.map(s => `
+    <div class="p-story-item">
+      <div style="font-weight:600; font-size:0.8rem; color:var(--gold)">${s.title}</div>
+      <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px">${s.desc}</div>
+    </div>
+  `).join('');
+
+  aContainer.innerHTML = stories.map((s, i) => `<div>${i+1}. ${s.title} <span style="color:red; cursor:pointer" onclick="stories.splice(${i},1);renderStories()">[Hapus]</span></div>`).join('');
+}
+
+// GALLERY LOGIC
+function handleUpload(files) {
+  Array.from(files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => { gallery.push(e.target.result); renderThumb(); };
+    reader.readAsDataURL(file);
+  });
+}
+
+function renderThumb() {
+  document.getElementById('thumb-container').innerHTML = gallery.map(img => `<div class="thumb"><img src="${img}"></div>`).join('');
+}
+
+function saveAll() {
+  const data = {
+    pria: document.getElementById('f-pria').value,
+    wanita: document.getElementById('f-wanita').value,
+    stories: stories,
+    bank: {
+      name: document.getElementById('f-bank-name').value,
+      no: document.getElementById('f-bank-number').value,
+      user: document.getElementById('f-bank-user').value
+    }
+  };
+  localStorage.setItem('weddingDataFull', JSON.stringify(data));
+  alert('✦ Undangan Berhasil Dipublikasikan oleh Lutfi Wedding!');
+}
+</script>
+</body>
+</html>
